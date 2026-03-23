@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+# Disallow admin or private routes (add if needed later)
+# Disallow: /admin
+
+Sitemap: https://studenttechhub.com/sitemap.xml
