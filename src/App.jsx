@@ -8,6 +8,8 @@ import Footer    from "./components/Footer";
 import Home      from "./pages/Home";
 import About     from "./pages/About";
 import Tools     from "./pages/Tools";
+import Resources from "./pages/Resources";
+import Notes     from "./pages/Notes";
 import NotFound  from "./pages/NotFound";
 
 // ✅ Individual tool pages (live)
@@ -45,12 +47,14 @@ function AppContent({ dark, setDark }) {
           <Route path="/tools/number-converter" element={<NumberConverter />} />
           <Route path="/tools/unit-converter"   element={<UnitConverter />} />
 
+          {/* ✅ LIVE */}
+          <Route path="/resources" element={<Resources />} />
+
           {/* 🚧 COMING SOON — replace <ComingSoon /> with the real page when ready */}
-          <Route path="/resources" element={<ComingSoon />} />
           <Route path="/guides"    element={<ComingSoon />} />
           <Route path="/ai-tools"  element={<ComingSoon />} />
           <Route path="/projects"  element={<ComingSoon />} />
-          <Route path="/notes"     element={<ComingSoon />} />
+          <Route path="/notes"     element={<Notes />} />
           <Route path="/search"    element={<ComingSoon />} />
 
           {/* 404 */}
