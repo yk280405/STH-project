@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { JAVA_CONTENT } from "../data/javaContent";
+import { JAVA_UNIT2_CONTENT } from "../data/javaUnit2Content";
 import useSEO from "../hooks/useSEO";
 
 // ─── Content Block Renderer ───────────────────────────────────────────────────
@@ -212,7 +213,7 @@ function SectionViewer({ section, chapterColor }) {
 
 // ─── Subject Card (on the landing) ────────────────────────────────────────────
 const SUBJECTS = [
-  { id: "java", label: "Java Programming", icon: "☕", color: "#C4913A", status: "live", unit: "Unit 1 Complete", chapters: 3 },
+  { id: "java", label: "Java Programming", icon: "☕", color: "#C4913A", status: "live", unit: "Unit 1 & 2 Complete", chapters: 5 },
   { id: "python", label: "Python", icon: "🐍", color: "#2D3A8C", status: "soon" },
   { id: "cpp", label: "C++ & DSA", icon: "⚡", color: "#1D6B4A", status: "soon" },
   { id: "os", label: "Operating Systems", icon: "💾", color: "#8B4A9C", status: "soon" },
@@ -242,12 +243,9 @@ export default function Resources() {
     setActiveSection(JAVA_CONTENT.chapters[0].sections[0].id);
   };
 
-  const currentChapter = activeChapter
-    ? JAVA_CONTENT.chapters.find(c => c.id === activeChapter)
-    : null;
-  const currentSection = currentChapter && activeSection
-    ? currentChapter.sections.find(s => s.id === activeSection)
-    : null;
+  const ALL_CHAPTERS = [...JAVA_CONTENT.chapters, ...JAVA_UNIT2_CONTENT.chapters];
+  const currentChapter = activeChapter ? ALL_CHAPTERS.find(c => c.id === activeChapter) : null;
+  const currentSection = currentChapter && activeSection ? currentChapter.sections.find(s => s.id === activeSection) : null;
 
   // ── Subject landing ──────────────────────────────────────────────────────────
   if (!activeSubject) {
@@ -329,13 +327,11 @@ export default function Resources() {
         <span style={{ color: "var(--text3)" }}>›</span>
         <span style={{ color: "var(--accent)", fontWeight: 600 }}>Java Programming — Unit 1</span>
         {/* PDF Download */}
-        <a href={JAVA_CONTENT.pdfUrl} download="Java_Unit1_Complete_Notes.pdf" style={{
-          marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 6,
-          textDecoration: "none", fontSize: 12, fontWeight: 700,
-          color: "#fff", background: "#B03A2E",
-          padding: "7px 16px", borderRadius: 20,
-        }}>
-          📥 Download PDF
+        <a href={JAVA_CONTENT.pdfUrl} download="Java_Unit1_Complete_Notes.pdf" style={{ marginLeft: "auto", display: "inline-flex", alignItems: "center", gap: 6, textDecoration: "none", fontSize: 12, fontWeight: 700, color: "#fff", background: "#B03A2E", padding: "7px 14px", borderRadius: 20 }}>
+          📥 Unit 1 PDF
+        </a>
+        <a href={JAVA_UNIT2_CONTENT.pdfUrl} download="Java_Unit2_Complete_Notes.pdf" style={{ display: "inline-flex", alignItems: "center", gap: 6, textDecoration: "none", fontSize: 12, fontWeight: 700, color: "#fff", background: "#8B4A9C", padding: "7px 14px", borderRadius: 20 }}>
+          📥 Unit 2 PDF
         </a>
       </div>
 
@@ -345,7 +341,7 @@ export default function Resources() {
         <div style={{ position: "sticky", top: 80 }}>
           {/* Chapter tabs */}
           <div style={{ marginBottom: 12 }}>
-            {JAVA_CONTENT.chapters.map(ch => (
+            {ALL_CHAPTERS.map(ch => (
               <button key={ch.id} onClick={() => { setActiveChapter(ch.id); setActiveSection(ch.sections[0].id); }}
                 style={{
                   width: "100%", textAlign: "left", padding: "12px 14px",

@@ -94,6 +94,12 @@ export default function Navbar({ dark, setDark }) {
               textDecoration: "none", padding: "6px 10px", borderRadius: 8
             }}>About</Link>
 
+            <Link to="/feedback" className="hide-mobile" style={{
+              fontSize: 13, fontWeight: 500,
+              color: loc.pathname === "/feedback" ? "var(--accent)" : "var(--text2)",
+              textDecoration: "none", padding: "6px 10px", borderRadius: 8
+            }}>Feedback</Link>
+
             {/* Theme toggle */}
             <button onClick={() => setDark(!dark)} style={{
               background: "var(--bg2)", border: "1px solid var(--border)", borderRadius: 10,

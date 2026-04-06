@@ -7,18 +7,22 @@ import Footer    from "./components/Footer";
 // ✅ Live pages
 import Home      from "./pages/Home";
 import About     from "./pages/About";
-import Tools     from "./pages/Tools";
 import Resources from "./pages/Resources";
 import Notes     from "./pages/Notes";
+import Search    from "./pages/Search";
+import Tools     from "./pages/Tools";
+import Feedback  from "./pages/Feedback";
+import AITools   from "./pages/AITools";
+import Projects  from "./pages/Projects";
 import NotFound  from "./pages/NotFound";
 
-// ✅ Individual tool pages (live)
+// ✅ Individual tool pages
 import CGPACalculator       from "./pages/tools/CGPACalculator";
 import PercentageCalculator from "./pages/tools/PercentageCalculator";
 import NumberConverter      from "./pages/tools/NumberConverter";
 import UnitConverter        from "./pages/tools/UnitConverter";
 
-// 🚧 Coming soon — swap these out one by one as you build them
+// 🚧 Coming soon
 import ComingSoon from "./pages/ComingSoon";
 
 import { lightTheme, darkTheme, globalCSS } from "./styles/theme";
@@ -35,10 +39,15 @@ function AppContent({ dark, setDark }) {
       <Navbar dark={dark} setDark={setDark} />
       <main style={{ flex: 1 }}>
         <Routes>
-
           {/* ✅ LIVE */}
-          <Route path="/"         element={<Home />} />
-          <Route path="/about"    element={<About />} />
+          <Route path="/"                       element={<Home />} />
+          <Route path="/about"                  element={<About />} />
+          <Route path="/resources"              element={<Resources />} />
+          <Route path="/notes"                  element={<Notes />} />
+          <Route path="/search"                 element={<Search />} />
+          <Route path="/feedback"               element={<Feedback />} />
+          <Route path="/ai-tools"               element={<AITools />} />
+          <Route path="/projects"               element={<Projects />} />
 
           {/* ✅ LIVE — Tools hub + individual tools */}
           <Route path="/tools"                  element={<Tools />} />
@@ -47,19 +56,11 @@ function AppContent({ dark, setDark }) {
           <Route path="/tools/number-converter" element={<NumberConverter />} />
           <Route path="/tools/unit-converter"   element={<UnitConverter />} />
 
-          {/* ✅ LIVE */}
-          <Route path="/resources" element={<Resources />} />
-
-          {/* 🚧 COMING SOON — replace <ComingSoon /> with the real page when ready */}
-          <Route path="/guides"    element={<ComingSoon />} />
-          <Route path="/ai-tools"  element={<ComingSoon />} />
-          <Route path="/projects"  element={<ComingSoon />} />
-          <Route path="/notes"     element={<Notes />} />
-          <Route path="/search"    element={<ComingSoon />} />
+          {/* 🚧 COMING SOON */}
+          <Route path="/guides"                 element={<ComingSoon />} />
 
           {/* 404 */}
-          <Route path="*" element={<NotFound />} />
-
+          <Route path="*"                       element={<NotFound />} />
         </Routes>
       </main>
       <Footer />
